@@ -12,9 +12,10 @@
 
 <img width="499" height="267" alt="image" src="https://github.com/user-attachments/assets/284a5d40-9682-4527-83e2-162ee331ad87" />
 
-更改search_vul函数中queue_2变量（自定义查询语句）
+更改search_vul函数中queue_2变量（自定义查询语句，source和sink点可以自定义）
 
-<img width="736" height="397" alt="image" src="https://github.com/user-attachments/assets/3c4e7c6b-1b52-4d04-943a-d0bcd7b7d7b4" />
+<img width="1288" height="551" alt="image" src="https://github.com/user-attachments/assets/1eb1fd1d-7e24-4ed0-adea-36444bacf8d7" />
+
 
 
 运行phpast_creat_1_18.py，
