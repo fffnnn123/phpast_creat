@@ -1,3 +1,8 @@
+### 工具功能
+分析函数调用关系，将分析结果导入neo4j中，
+
+之后利用Cypher查询语句查找函数调用链（可以自定义source、sink点查询函数调用链）。
+
 ### 环境
 需安装neo4j数据库，并安装apoc插件，
 
@@ -18,3 +23,13 @@
 7.运行phpast_creat_1_18.py分析函数调用关系并导入到neo4j数据库
 
 8.运行search_neo4j_19.py查询函数调用关系并保存查询结果
+
+
+
+### 参考
+
+https://github.com/LoRexxar/Kunlun-M/
+
+https://github.com/viraptor/phply
+
+https://github.com/wh1t3p1g/tabby
