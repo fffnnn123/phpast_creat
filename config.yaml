@@ -1,2 +1,10 @@
-# 根据报错的行数，忽略解析整个文件
+# 根据解析报错的行数，忽略解析整个文件
 error_line: [136,55,22,68]
+
+# 被扫描项目的根目录
+parse_multiple_files_path: "D:\\src"
+
+neo4j_user: "neo4j"
+
+neo4j_password: "xxx"
+
