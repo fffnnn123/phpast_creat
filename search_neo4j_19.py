@@ -158,13 +158,16 @@ neo4j.close()
 
 print(str(datas))
 
-# 去重
-# datas = list(set(datas))
+# 使用集合去重 + 保持顺序
+seen = set()
 xlsx = []
-for i in datas:
-    if i is not None:
-        xlsx.append(i)
-# print(xlsx)
+for item in datas:
+    t = tuple(item)  # 列表不能哈希，转成元组
+    if t not in seen and t is not None:
+        seen.add(t)
+        xlsx.append(item)
+
+print(str(xlsx))
 
 
 # 创建一个新的工作簿
