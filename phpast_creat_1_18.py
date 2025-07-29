@@ -332,7 +332,8 @@ def delete_files_in_directory(directory):
 # 示例调用
 
 def run_neo4j_admin_import(nodes_file, relationships_file):
-
+    # delete_files_in_directory('D:/nettools/neo4j-community-5.20.0/data/databases/neo4j/')
+    # delete_files_in_directory('D:/nettools/neo4j-community-5.20.0/data/transactions/neo4j/')
     # print("删除数据库文件完成")
     # 构造 neo4j-admin import 命令（确保参数格式正确）
     command = [
@@ -359,8 +360,13 @@ def run_neo4j_admin_import(nodes_file, relationships_file):
 
 start_time = time.time()
 
-parse_multiple_files("D:\\src\\")
 
+with open('config.yaml', 'r', encoding='utf-8') as file:
+    config = yaml.safe_load(file)
+
+parse_multiple_files(config["parse_multiple_files_path"])
+
+# call_graph = build_call_graph(functio ns_define, function_calls)
 end_time = time.time()
 print("分析消耗: " + str((end_time-start_time)/60) + "分钟")
 
@@ -525,8 +531,8 @@ writer_functions_calls = csv.writer(f_functions_calls)
 writer_functions_calls.writerows(calls_neo4j_csv)  # 写入多行数据
 f_functions_calls.close()
 
-# 这里是/py文件运行根目录+functions.csv、functions.csv
-run_neo4j_admin_import("D:/py文件运行根目录/functions.csv", "D://py文件运行根目录、function_calls.csv")
+
+run_neo4j_admin_import(os.getcwd() + "/functions.csv", os.getcwd() + "/function_calls.csv")
 print("导入完成")
 end_time_neo4j = time.time()
 print("写入xml，导入neo4j消耗: " + str((end_time_neo4j-start_time_neo4j)/60) + "分钟")
