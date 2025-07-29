@@ -1,13 +1,18 @@
 import time
 
+import yaml
 from neo4j import GraphDatabase
 from openpyxl import Workbook
 # 查看函数调用关系，输出成调用链
 # 输出到xlsx中
 
+with open('config.yaml', 'r', encoding='utf-8') as file:
+    config = yaml.safe_load(file)
+
+
 
 # 设置 Neo4j 连接
-neo4j = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "密码"))
+neo4j = GraphDatabase.driver("bolt://localhost:7687", auth=(config["neo4j_user"], config["neo4j_password"]))
 
 queue_1 = '''
 MATCH path = (start:Function)-[:CALLS*]->(end:Function)
@@ -156,7 +161,17 @@ print("查询时间消耗: " + str((end_time - start_time)/60) + "m")
 # 关闭连接
 neo4j.close()
 
-print(str(datas))
+# print(str(datas))
+
+# 去重
+'''
+# datas = list(set(datas))
+xlsx = []
+for i in datas:
+    if i is not None:
+        xlsx.append(i)
+print(str(xlsx))
+'''
 
 # 使用集合去重 + 保持顺序
 seen = set()
@@ -169,7 +184,6 @@ for item in datas:
 
 print(str(xlsx))
 
-
 # 创建一个新的工作簿
 wb = Workbook()
 ws = wb.active
@@ -178,8 +192,8 @@ ws = wb.active
 for row in xlsx:
     ws.append(row)
 
-# 保存为 xlsx 文件，需要更改这里的保存路径
-wb.save("C:\\Users\\xxx\\Desktop\\output.xlsx")
+# 保存为 xlsx 文件
+wb.save("output.xlsx")
 
 print("写入成功！")
 
