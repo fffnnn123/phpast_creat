@@ -9,6 +9,7 @@
 
 ### 使用方式
 更改config.yaml配置文件，
+
 <img width="499" height="267" alt="image" src="https://github.com/user-attachments/assets/284a5d40-9682-4527-83e2-162ee331ad87" />
 
 更改search_vul函数中queue_2变量（自定义查询语句）
